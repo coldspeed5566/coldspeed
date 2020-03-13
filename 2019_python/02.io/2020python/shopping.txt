@@ -1,0 +1,9 @@
+筆記本和筆都有編號 _sku (Stock Keeping Unit), 和價格 _price
+筆記本有大小 _size (字串）
+筆有顏色 _color (字串)
+筆記本的 constructor 像這樣： __init__(self, sku, price, size)
+筆的 constructor 像這樣： __init__(self, sku, price, color)
+都有 getSKU() 能回傳 _sku（不要印出)
+都有 getPrice(), 能回傳價錢 _price（不要印出)
+都有 info(), 能回傳簡短簡介字串 （不要印出)
+都有 prDetails() 能印出多行的詳細資訊
