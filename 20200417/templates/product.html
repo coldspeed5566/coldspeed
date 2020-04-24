@@ -6,15 +6,13 @@
   </head>
   <body>
     <h1><a href="/">MyShop</a> - {{product.name}}</h1>
-    <h2><a href="/">MyShop</a> - {{product.name}}</h2>
-    <h3><a href="/">MyShop</a> - {{product.name}}</h3>
-
-    <img src='{{ product.picture }}' style ="width: 200px;">
+    <img src="{{ product.image }}" style="width: 200px;">
 
     <ul>
       <li>ID: {{product.id}}</li>
       <li>price: NT$ {{product.price}}</li>
       <li>description: {{product.desc}}</li>
+      <li><a href="/product/{{product.id}}/edit">Edit</a></li>
     </ul>
 
   </body>
