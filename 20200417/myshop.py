@@ -68,8 +68,25 @@ def edit(id):
         return redirect('/product/' + id)
     return render_template('product-edit.html', product=prod)
 
-@app.route("/cart/edit")
+@app.route('/cart/edit', methods = ['GET', 'POST'])
 def cartEdit():
-  return render_templates("cart-edit")
+    errors = {}
+    if request.method == 'POST':
+        pen = int(request.form['pen'])
+        if pen <= 0:
+            errors["sku01"] = "should be positive"
+        
+        cup = int(request.form['cup'])
+        if cup <= 0:
+            errors["sku02"] = "should be positive"
+        
+        if len(errors):
+            return render_template('cart-edit.html', cart=cart, errors=errors)
+        
+        cart['sku01'] = pen
+        cart['sku02'] = cup
+        return redirect('/')
+
+    return render_template("cart-edit.html", cart=cart, errors=errors)
 
 
