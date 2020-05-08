@@ -34,6 +34,8 @@ products = {
   },
 }
 
+mycart = {}
+
 @app.route("/")
 def myshop():
   return render_template("myshop.html", products=products)
@@ -45,9 +47,27 @@ def product(id):
 
 @app.route("/cart")
 def cart():
-  return render_template("cart.html")
+  total = 0
+  for id, num in mycart.items():
+    pd = products[id]
+    total += pd['price'] * num
+  
+  return render_template("cart.html", mycart=mycart, products=products, total=total)
 
 @app.route("/add-cart/<id>")
 def addCart(id):
-  print(id)
+  mycart[id] = mycart.get(id, 0) + 1
   return redirect('/cart')
+
+@app.route("/remove-cart/<id>")
+def removeCart(id):
+  del mycart[id]
+  return redirect('/cart')
+
+@app.route('/product/<id>/edit', methods = ['GET', 'POST'])
+def ddProduct(id):
+    if request.method == 
+
+
+    return render_template('product-edit.html', product=prod,
+        name=name, price=price, errors=errors)
