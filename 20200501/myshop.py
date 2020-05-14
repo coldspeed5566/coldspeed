@@ -64,10 +64,15 @@ def removeCart(id):
   del mycart[id]
   return redirect('/cart')
 
-@app.route('/product/<id>/edit', methods = ['GET', 'POST'])
-def ddProduct(id):
-    if request.method == 
+@app.route('/add-product', methods = ['GET', 'POST'])
+def addProduct():
+  if request.method == 'POST':
+    name = request.form.get('name')
+    price = request.form.get('price')
+    products['sku' + str(len(products))] = { 
+      'name': name, 
+      'price': price
+    }
+    return redirect('/')
 
-
-    return render_template('product-edit.html', product=prod,
-        name=name, price=price, errors=errors)
+  return render_template('add-product.html')
