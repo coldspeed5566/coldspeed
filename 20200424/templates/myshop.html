@@ -1,26 +1,37 @@
 {% extends 'base.html' %}
-
 {% block main %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Products</h1>
+  <p class="lead">List of products</p>
+</div>
+
 <div class="container">
-  <h1>Add Product</h1>
-  <form action="/add-product" method="post">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" name="name" aria-describedby="name">
+  <div class="row mb-3 text-center">
+    {% for ley, pd in products.items() %}
+    <div class="col-md-3">
+    <div class="card mb-4 shadow-sm">
+      <a href="product/{{pd.id}}">
+      <img src="{{pd.image}}" class="card-img-top" style ='height:150px;'>
+      </a>
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">{{pd.name}}</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">NTD:${{pd.price}}</h1>
+        <ul class="list-unstyled mt-3 mb-4">
+        <p>{{pd.desc}}</p>
+        </ul>
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+        <a class='btn'
+      </div>
     </div>
-    <div class="form-group">
-      <label for="price">Price</label>
-      <input type="text" class="form-control" id="price" name="price">
     </div>
-    <div class="form-group">
-      <label for="image">Image</label>
-      <input type="text" class="form-control" id="image" name="image">
-    </div>
-    <div class="form-group">
-      <label for="description">desc</label>
-      <input type="text" class="form-control" id="desc" name="desc">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>  
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
+
+
+
+
+Type a message
